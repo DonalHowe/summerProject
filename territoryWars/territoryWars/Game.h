@@ -25,6 +25,8 @@ public:
 	MainMenu m_menu;
 	gameStates m_states{ gameStates::menuState };
 	Entity entity;
+	sf::Texture m_backgroundTexture;
+	sf::Sprite m_backgroundSprite;
 protected:
 	
 	

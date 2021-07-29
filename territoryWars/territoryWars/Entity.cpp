@@ -2,40 +2,28 @@
 
 void Entity::movement()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		m_playerMoving = true;
+		spriteVector.at(0).move(-1,0);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		m_player.move(1, 0);
+		spriteVector.at(0).move(1, 0);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		m_player.move(0, -1);
+		spriteVector.at(0).move(0, -1);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		m_player.move(0, 1);
+		spriteVector.at(0).move(0, 1);
 	}
-	else
-	{
-		m_playerMoving = false;
-	}
+	
 }
 
 void Entity::energyBar()
 {
-	if (m_playerMoving == true)
-	{
-		m_energy.setSize(sf::Vector2f{ m_energyXsize,m_energyYsize });
-
-		m_energyXsize += 2.9;
-		if (m_energyXsize > 200)
-		{
-			m_energyXsize = 10;
-		}
-	}
+	
 	
 }
 
@@ -43,21 +31,33 @@ void Entity::update(double dt)
 {
 	energyBar();
 	movement();
+	
 }
 
 void Entity::render(sf::RenderWindow& t_window)
 {
 
-	t_window.draw(m_energy);
+	
+	for (int i = 0; i < 4; i++)
+	{
+		t_window.draw(spriteVector.at(i));
+	}
 }
 
 Entity::Entity()
 {
-	m_energy.setFillColor(sf::Color::Blue);
-	m_energy.setPosition(50, 600);
-	m_player.setSize(sf::Vector2f{ 50,50 });
-	m_player.setFillColor(sf::Color::Red);
-	m_player.setPosition(ScreenSize::m_width / 2, ScreenSize::m_height / 2);
+	if (!m_playerTexture.loadFromFile("images/Bear/Walk3.png"))
+	{
+		std::cout << "cant load sprite" << std::endl;
+
+	}
+	m_playerSprites.setTexture(m_playerTexture);
+	for (int i = 0; i < 4; i++)
+	{
+		spriteVector.push_back(m_playerSprites);
+	}
+
+	
 }
 
 Entity::~Entity()

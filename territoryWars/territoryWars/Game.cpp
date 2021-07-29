@@ -11,8 +11,12 @@ static double const MS_PER_UPDATE = 10.0;
 Game::Game() : m_window(sf::VideoMode(ScreenSize::m_width, ScreenSize::m_height, 32), "SFML Playground", sf::Style::Default)
 {
 	m_window.setVerticalSyncEnabled(true);
-
-
+	if (!m_backgroundTexture.loadFromFile("images/game_background_1/game_background_1.png"))
+	{
+		std::cout << "cant load sprite" << std::endl;
+	}
+	m_backgroundSprite.setTexture(m_backgroundTexture);
+	m_backgroundSprite.setScale(.33, .5);
 }
 
 ////////////////////////////////////////////////////////////
@@ -85,7 +89,7 @@ void Game::update(double dt)
 	if (m_menu.switchToGamePlay == true)
 	{
 		m_states = gameStates::gamePlayeState;
-		std::cout << "now in game" << std::endl;
+		
 	}
 
 	if (m_states == gameStates::menuState)
@@ -123,9 +127,11 @@ void Game::render()
 	}
 	else if (m_states == gameStates::gamePlayeState)
 	{
+		m_window.draw(m_backgroundSprite);
 		entity.render(m_window);
 		theflooring.render(m_window);
 		playerTransition.render(m_window);
+		
 	}
 	else if (m_states == gameStates::lossState)
 	{

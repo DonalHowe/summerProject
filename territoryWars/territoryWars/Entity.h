@@ -10,7 +10,9 @@ class Entity
 public:
 	void update(double dt);
 	void render(sf::RenderWindow & t_window);
-	sf::RectangleShape m_player;
+	sf::Texture m_playerTexture;
+	sf::Sprite m_playerSprites;
+	std::vector<sf::Sprite> spriteVector;
 	sf::RectangleShape m_energy;
 	bool m_playerMoving = false;
 	float m_energyXsize = 10;
