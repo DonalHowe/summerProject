@@ -21,7 +21,8 @@ class MainMenu
 	sf::Text instructionsText;
 	sf::Text mapControlText;
 	sf::Text creditsText;
-	
+	sf::Sprite background;
+	sf::Texture bgTexture;
 	bool mouseClick = false;
 	bool mouseUnClick = false;
 	void setupText();

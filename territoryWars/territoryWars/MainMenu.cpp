@@ -86,8 +86,10 @@ void MainMenu::sceneMove()
 
 void MainMenu::render(sf::RenderWindow& t_window)
 {
+	
 	if (scenes == sceneSwicther::mainScreen)
 	{
+		t_window.draw(background);
 		for (int i = 0; i < MAX_RECTS; i++)
 		{
 			t_window.draw(m_rectangles[i]);
@@ -99,15 +101,15 @@ void MainMenu::render(sf::RenderWindow& t_window)
 	}
 	else if (scenes == sceneSwicther::credits)
 	{
-
+		t_window.draw(background);
 	}
 	else if (scenes == sceneSwicther::instructions)
 	{
-
+		t_window.draw(background);
 	}
 	else if (scenes == sceneSwicther::mapControl)
 	{
-
+		t_window.draw(background);
 	}
 }
 
@@ -138,6 +140,14 @@ MainMenu::MainMenu()
 		std::cout << "cant load font" << std::endl;
 	
 	}
+	if (!bgTexture.loadFromFile("images/game_background_3/layers/battleground.png"))
+	{
+		std::cout << "cant load sprite" << std::endl;
+
+	}
+	background.setTexture(bgTexture);
+	background.setScale(.5, .5);
+
 
 }
 

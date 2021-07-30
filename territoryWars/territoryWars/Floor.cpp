@@ -2,11 +2,16 @@
 
 void Floor::createTile()
 {
-    m_tile.setSize(sf::Vector2f{ 100,20 });
-    m_tile.setFillColor(sf::Color::Magenta);
+    if (!tTexture.loadFromFile("images/dungeon-platformer-pixel-art-tileset-2/PNG/Tiles_rock/tile27.png"))
+    {
+        std::cout << "cant load sprite" << std::endl;
+
+    }
+    m_tiles.setTexture(tTexture);
+    m_tiles.setScale(1.5, 1.5);
     for (int i = 0; i < MAX_TILES; i++)
     {
-        m_floors.push_back(m_tile);
+        m_floors.push_back(m_tiles);
     }
 }
 
@@ -16,8 +21,11 @@ void Floor::tileSpacing()
   
     for (int i = 0; i < MAX_TILES; i++)
     {
-        m_floors.at(i).setPosition(rand() % ScreenSize::m_width - 100 , rand() % ScreenSize::m_height - 20);
-      
+        m_floors.at(i).setPosition(rand() % ScreenSize::m_width - 300 , rand() % ScreenSize::m_height - 200);
+        if (m_floors.at(i).getGlobalBounds().intersects(m_floors.at(i).getGlobalBounds()))
+        {
+            m_floors.at(i).setPosition(rand() % ScreenSize::m_width - 100, rand() % ScreenSize::m_height - 20);
+      }
     }
 }
 
@@ -31,7 +39,7 @@ Floor::~Floor()
 {
 }
 
-std::vector<sf::RectangleShape> Floor::getFloor()
+std::vector<sf::Sprite> Floor::getFloor()
 {
     return m_floors;
 }

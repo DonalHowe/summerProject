@@ -17,6 +17,10 @@ public:
 	bool m_playerMoving = false;
 	float m_energyXsize = 10;
 	float m_energyYsize = 10;
+	bool playerOnesTurn = false;
+	bool playerTwoTurn = false;
+	bool playerThreeTurn = false;
+	bool playerFourTurn = false;
 
 	Entity();
 	~Entity();
