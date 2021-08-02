@@ -7,20 +7,26 @@ class Entity
 {
 	void movement();
 	void energyBar();
+
+
+	sf::Texture m_playerTexture;
 public:
 	void update(double dt);
 	void render(sf::RenderWindow & t_window);
-	sf::Texture m_playerTexture;
+	int energy = 100000;
+	void jumpForward();
+	void moveRight();
+	void moveLeft();
+	void moveUP();
+	void moveDown();
+	sf::Vector2f jumpVector;
 	sf::Sprite m_playerSprites;
-	std::vector<sf::Sprite> spriteVector;
-	sf::RectangleShape m_energy;
-	bool m_playerMoving = false;
-	float m_energyXsize = 10;
-	float m_energyYsize = 10;
+	
 	bool playerOnesTurn = false;
 	bool playerTwoTurn = false;
 	bool playerThreeTurn = false;
 	bool playerFourTurn = false;
+	
 
 	Entity();
 	~Entity();

@@ -2,87 +2,7 @@
 // the movement for the players
 void Entity::movement()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-		if (playerOnesTurn == true)
-		{
-			spriteVector.at(0).move(-1, 0);
-		}
-		else if (playerTwoTurn == true)
-		{
-			spriteVector.at(1).move(-1, 0);
-		}
-		else if (playerThreeTurn == true)
-		{
-			spriteVector.at(2).move(-1, 0);
-		}
-		else if (playerFourTurn == true)
-		{
-			spriteVector.at(3).move(-1, 0);
-		}
 	
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-		if (playerOnesTurn == true)
-		{
-			spriteVector.at(0).move(1, 0);
-		}
-		else if (playerTwoTurn == true)
-		{
-			spriteVector.at(1).move(1, 0);
-		}
-		else if (playerThreeTurn == true)
-		{
-			spriteVector.at(2).move(1, 0);
-		}
-		else if (playerFourTurn == true)
-		{
-			spriteVector.at(3).move(1, 0);
-		}
-		
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-		if (playerOnesTurn == true)
-		{
-			spriteVector.at(0).move(0, -1);
-		}
-		else if (playerTwoTurn == true)
-		{
-			spriteVector.at(1).move(0, -1);
-		}
-		else if (playerThreeTurn == true)
-		{
-			spriteVector.at(2).move(0, -1);
-		}
-		else if (playerFourTurn == true)
-		{
-			spriteVector.at(3).move(0, -1);
-		}
-
-		
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		if (playerOnesTurn == true)
-		{
-			spriteVector.at(0).move(0, 1);
-		}
-		else if (playerTwoTurn == true)
-		{
-			spriteVector.at(1).move(0, 1);
-		}
-		else if (playerThreeTurn == true)
-		{
-			spriteVector.at(2).move(0, 1);
-		}
-		else if (playerFourTurn == true)
-		{
-			spriteVector.at(3).move(0, 1);
-		}
-
-	}
 	
 }
 // the players energy bar
@@ -133,12 +53,46 @@ void Entity::update(double dt)
 void Entity::render(sf::RenderWindow& t_window)
 {
 
-	
-	for (int i = 0; i < 4; i++)
-	{
-		t_window.draw(spriteVector.at(i));
-	}
 }
+// for the character to jump
+void Entity::jumpForward()
+{
+	// this is for the player to jump forward
+	jumpVector.x,jumpVector.y=m_playerSprites.getPosition().x, m_playerSprites.getPosition().y;
+	jumpVector.x=jumpVector.x+3;
+	jumpVector.y += jumpVector.y * cos(-30);
+	m_playerSprites.setPosition(jumpVector);
+	energy--;
+
+}
+
+void Entity::moveRight()
+{
+	m_playerSprites.move(1, 0);
+	energy--;
+}
+
+void Entity::moveLeft()
+{
+	m_playerSprites.move(-1, 0);
+	energy--;
+}
+
+void Entity::moveUP()
+{
+	m_playerSprites.move(0,-1);
+	energy--;
+}
+
+void Entity::moveDown()
+{
+	m_playerSprites.move(0, 1);
+	energy--;
+}
+
+
+
+
 
 Entity::Entity()
 {
@@ -148,10 +102,7 @@ Entity::Entity()
 
 	}
 	m_playerSprites.setTexture(m_playerTexture);
-	for (int i = 0; i < 4; i++)
-	{
-		spriteVector.push_back(m_playerSprites);
-	}
+	
 
 	
 }

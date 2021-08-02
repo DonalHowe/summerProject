@@ -17,6 +17,11 @@ Game::Game() : m_window(sf::VideoMode(ScreenSize::m_width, ScreenSize::m_height,
 	}
 	m_backgroundSprite.setTexture(m_backgroundTexture);
 	m_backgroundSprite.setScale(.33, .5);
+	// putting entities into a vector
+	for (int i = 0; i < 4; i++)
+	{
+		m_playerObjects.push_back(entity);
+	}
 }
 
 ////////////////////////////////////////////////////////////
@@ -82,6 +87,122 @@ void Game::processGameEvents(sf::Event& event)
 	}
 }
 
+// the player movement includes jumping 
+void Game::playerOneMovement()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+		{
+			m_playerObjects.at(0).moveLeft();
+			
+		}
+		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+		{
+			m_playerObjects.at(1).moveLeft();
+		}
+		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+		{
+			m_playerObjects.at(2).moveLeft();
+		}
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		{
+			m_playerObjects.at(3).moveLeft();
+		}
+
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+		{
+			m_playerObjects.at(0).moveRight();
+		}
+		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+		{
+			m_playerObjects.at(1).moveRight();
+		}
+		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+		{
+			m_playerObjects.at(2).moveRight();
+		}
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		{
+			m_playerObjects.at(3).moveRight();
+		}
+
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	{
+		if (entity.playerOnesTurn == true&&m_playerObjects.at(0).energy>0)
+		{
+			m_playerObjects.at(0).moveUP();
+		}
+		else if (entity.playerTwoTurn == true&&m_playerObjects.at(1).energy > 0)
+		{
+			m_playerObjects.at(1).moveUP();
+		}
+		else if (entity.playerThreeTurn == true&& m_playerObjects.at(2).energy > 0)
+		{
+			m_playerObjects.at(2).moveUP();
+		}
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		{
+			m_playerObjects.at(3).moveUP();
+		}
+
+
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+		{
+			m_playerObjects.at(0).moveDown();
+	
+		}
+		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+		{
+			m_playerObjects.at(1).moveDown();
+		}
+		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+		{
+			m_playerObjects.at(2).moveDown();
+		}
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		{
+			m_playerObjects.at(3).moveDown();
+		}
+
+	}
+	// if the players is out of energy
+		if (m_playerObjects.at(0).energy == 0 && m_playerObjects.at(1).energy == 0 && m_playerObjects.at(2).energy == 0 && m_playerObjects.at(3).energy == 0)
+		{
+			std::cout << "all players out of energy" << std::endl;;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+			{
+				m_playerObjects.at(0).jumpForward();
+			
+			}
+			else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+			{
+				m_playerObjects.at(1).jumpForward();
+				
+			}
+			else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+			{
+				m_playerObjects.at(2).jumpForward();
+				
+			}
+			else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+			{
+				m_playerObjects.at(3).jumpForward();
+				
+			}
+		}
+	
+}
 
 ////////////////////////////////////////////////////////////
 void Game::update(double dt)
@@ -101,6 +222,8 @@ void Game::update(double dt)
 		entity.update(dt);
 		theflooring.update(dt);
 		playerTransition.update(dt);
+		playerOneMovement();
+	
 	}
 	else if (m_states == gameStates::lossState)
 	{
@@ -131,7 +254,10 @@ void Game::render()
 		entity.render(m_window);
 		theflooring.render(m_window);
 		playerTransition.render(m_window);
-		
+		for (int i = 0; i < 4; i++)
+		{
+			m_window.draw(m_playerObjects.at(i).m_playerSprites);
+		}
 	}
 	else if (m_states == gameStates::lossState)
 	{

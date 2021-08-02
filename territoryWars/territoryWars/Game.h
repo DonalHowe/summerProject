@@ -25,8 +25,11 @@ public:
 	MainMenu m_menu;
 	gameStates m_states{ gameStates::menuState };
 	Entity entity;
+	std::vector<Entity> m_playerObjects;
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_backgroundSprite;
+	
+	void playerOneMovement();
 protected:
 	
 	
