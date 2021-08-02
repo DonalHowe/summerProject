@@ -13,7 +13,7 @@ class Entity
 public:
 	void update(double dt);
 	void render(sf::RenderWindow & t_window);
-	int energy = 100000;
+	int energy = 100;
 	void jumpForward();
 	void moveRight();
 	void moveLeft();

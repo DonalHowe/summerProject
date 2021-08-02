@@ -92,20 +92,20 @@ void Game::playerOneMovement()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(0).moveLeft();
 			
 		}
-		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(1).moveLeft();
 		}
-		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(2).moveLeft();
 		}
-		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(3).moveLeft();
 		}
@@ -113,19 +113,19 @@ void Game::playerOneMovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(0).moveRight();
 		}
-		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(1).moveRight();
 		}
-		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(2).moveRight();
 		}
-		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(3).moveRight();
 		}
@@ -133,19 +133,19 @@ void Game::playerOneMovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		if (entity.playerOnesTurn == true&&m_playerObjects.at(0).energy>0)
+		if (entity.playerOnesTurn == true&&m_playerObjects.at(0).energy>0 && playerTurn == true)
 		{
 			m_playerObjects.at(0).moveUP();
 		}
-		else if (entity.playerTwoTurn == true&&m_playerObjects.at(1).energy > 0)
+		else if (entity.playerTwoTurn == true&&m_playerObjects.at(1).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(1).moveUP();
 		}
-		else if (entity.playerThreeTurn == true&& m_playerObjects.at(2).energy > 0)
+		else if (entity.playerThreeTurn == true&& m_playerObjects.at(2).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(2).moveUP();
 		}
-		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(3).moveUP();
 		}
@@ -154,54 +154,71 @@ void Game::playerOneMovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+		if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(0).moveDown();
 	
 		}
-		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+		else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(1).moveDown();
 		}
-		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+		else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(2).moveDown();
 		}
-		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+		else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0 && playerTurn == true)
 		{
 			m_playerObjects.at(3).moveDown();
 		}
 
 	}
 	// if the players is out of energy
-		if (m_playerObjects.at(0).energy == 0 && m_playerObjects.at(1).energy == 0 && m_playerObjects.at(2).energy == 0 && m_playerObjects.at(3).energy == 0)
-		{
-			std::cout << "all players out of energy" << std::endl;;
-		}
+	
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		{
-			if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0)
+			if (entity.playerOnesTurn == true && m_playerObjects.at(0).energy > 0&&playerTurn==true)
 			{
 				m_playerObjects.at(0).jumpForward();
 			
 			}
-			else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0)
+			else if (entity.playerTwoTurn == true && m_playerObjects.at(1).energy > 0 && playerTurn == true)
 			{
 				m_playerObjects.at(1).jumpForward();
 				
 			}
-			else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0)
+			else if (entity.playerThreeTurn == true && m_playerObjects.at(2).energy > 0 && playerTurn == true)
 			{
 				m_playerObjects.at(2).jumpForward();
 				
 			}
-			else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0)
+			else if (entity.playerFourTurn == true && m_playerObjects.at(3).energy > 0 && playerTurn == true)
 			{
 				m_playerObjects.at(3).jumpForward();
 				
 			}
 		}
 	
+}
+
+void Game::enemymovement()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		m_enemy.moveLeft();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		m_enemy.moveRight();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	{
+		m_enemy.moveUp();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		m_enemy.moveDown();
+	}
 }
 
 ////////////////////////////////////////////////////////////
@@ -220,9 +237,24 @@ void Game::update(double dt)
 	else if (m_states == gameStates::gamePlayeState)
 	{
 		entity.update(dt);
+		m_enemy.update(dt);
 		theflooring.update(dt);
 		playerTransition.update(dt);
-		playerOneMovement();
+		if (m_playerObjects.at(0).energy == 0 && m_playerObjects.at(1).energy == 0 && m_playerObjects.at(2).energy == 0 && m_playerObjects.at(3).energy == 0)
+		{
+			std::cout << "all players out of energy" << std::endl;;
+			enemyTurn = true;
+			playerTurn = false;
+		}
+		if (playerTurn == true)
+		{
+			playerOneMovement();
+		}
+		else if (enemyTurn == true)
+		{
+			enemymovement();
+		}
+		
 	
 	}
 	else if (m_states == gameStates::lossState)
@@ -258,6 +290,7 @@ void Game::render()
 		{
 			m_window.draw(m_playerObjects.at(i).m_playerSprites);
 		}
+		m_window.draw(m_enemy.GetSprite());
 	}
 	else if (m_states == gameStates::lossState)
 	{

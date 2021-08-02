@@ -6,6 +6,7 @@
 #include "Entity.h"
 #include "Floor.h"
 #include "SwitchPlayer.h"
+#include "Enemy.h"
 enum class gameStates
 {
 	menuState,
@@ -19,6 +20,7 @@ class Game
 public:
 	
 	Game();
+	Enemy m_enemy;
 	SwitchPlayer playerTransition;
 	void run();
 	Floor theflooring;
@@ -28,8 +30,10 @@ public:
 	std::vector<Entity> m_playerObjects;
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_backgroundSprite;
-	
+	bool enemyTurn = false;
+	bool playerTurn = true;
 	void playerOneMovement();
+	void enemymovement();
 protected:
 	
 	
