@@ -7,6 +7,7 @@
 #include "Floor.h"
 #include "SwitchPlayer.h"
 #include "Enemy.h"
+#include "Transition.h"
 enum class gameStates
 {
 	menuState,
@@ -22,6 +23,7 @@ public:
 	Game();
 	Enemy m_enemy;
 	SwitchPlayer playerTransition;
+	Transition m_transition;
 	void run();
 	Floor theflooring;
 	MainMenu m_menu;

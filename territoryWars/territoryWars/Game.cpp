@@ -22,6 +22,7 @@ Game::Game() : m_window(sf::VideoMode(ScreenSize::m_width, ScreenSize::m_height,
 	{
 		m_playerObjects.push_back(entity);
 	}
+	m_transition.setupQueue(m_playerObjects, m_enemy);
 }
 
 ////////////////////////////////////////////////////////////
@@ -242,10 +243,11 @@ void Game::update(double dt)
 		playerTransition.update(dt);
 		if (m_playerObjects.at(0).energy == 0 && m_playerObjects.at(1).energy == 0 && m_playerObjects.at(2).energy == 0 && m_playerObjects.at(3).energy == 0)
 		{
-			std::cout << "all players out of energy" << std::endl;;
+			//std::cout << "all players out of energy" << std::endl;;
 			enemyTurn = true;
 			playerTurn = false;
 		}
+		//m_transition.switchTeams();
 		if (playerTurn == true)
 		{
 			playerOneMovement();

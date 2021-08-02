@@ -26,6 +26,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="ScreenSize.h" />
     <ClInclude Include="SwitchPlayer.h" />
+    <ClInclude Include="Transition.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="SwitchPlayer.cpp" />
+    <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

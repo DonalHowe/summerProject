@@ -38,7 +38,7 @@ void MainMenu::sceneMove()
 	{
 		if (m_mouse.y > 269 && m_mouse.y < 371)
 		{
-			std::cout << "Game" << std::endl;
+			//std::cout << "Game" << std::endl;
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				scenes = sceneSwicther{ sceneSwicther::GamePlay };

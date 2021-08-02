@@ -68,12 +68,14 @@ void Entity::jumpForward()
 
 void Entity::moveRight()
 {
+	m_playerSprites.setScale(1, 1);
 	m_playerSprites.move(1, 0);
 	energy--;
 }
 
 void Entity::moveLeft()
 {
+	m_playerSprites.setScale(-1,1);
 	m_playerSprites.move(-1, 0);
 	energy--;
 }
