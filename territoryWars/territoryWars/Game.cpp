@@ -220,6 +220,10 @@ void Game::enemymovement()
 	{
 		m_enemy.moveDown();
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		m_enemy.setBulletShot(true);
+	}
 }
 
 ////////////////////////////////////////////////////////////
@@ -313,6 +317,11 @@ void Game::render()
 			m_window.draw(m_playerObjects.at(i).m_playerSprites);
 		}
 		m_window.draw(m_enemy.GetSprite());
+		if (m_enemy.getHasShot() == true)
+		{
+			m_window.draw(m_enemy.getProjectile().m_getSprite());
+		}
+		
 	}
 	else if (m_states == gameStates::lossState)
 	{

@@ -18,6 +18,21 @@ bool Enemy::getAlive()
 	return m_alive;
 }
 
+EnemyProjectile Enemy::getProjectile()
+{
+	return m_projectile;
+}
+
+bool Enemy::getHasShot()
+{
+	return hasShot;
+}
+
+void Enemy::setBulletShot(bool t_hasShot)
+{
+	hasShot = t_hasShot;
+}
+
 int Enemy::GetEnergy()
 {
 	return m_energy;
@@ -30,6 +45,7 @@ sf::Sprite Enemy::GetSprite()
 
 void Enemy::update(double dt)
 {
+	m_projectile.update(dt);
 }
 
 void Enemy::moveUp()
