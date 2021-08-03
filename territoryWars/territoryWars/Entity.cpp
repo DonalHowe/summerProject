@@ -50,9 +50,18 @@ void Entity::update(double dt)
 	}
 }
 
+void Entity::setEnergy(int t_energy)
+{
+	energy = t_energy;
+}
+
 void Entity::render(sf::RenderWindow& t_window)
 {
 
+}
+bool Entity::getAlive()
+{
+	return m_alive;
 }
 // for the character to jump
 void Entity::jumpForward()

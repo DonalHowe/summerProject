@@ -8,12 +8,14 @@ class Entity
 	void movement();
 	void energyBar();
 
-
+	bool m_alive = true;
 	sf::Texture m_playerTexture;
 public:
 	void update(double dt);
+	void setEnergy(int t_energy);
 	void render(sf::RenderWindow & t_window);
-	int energy = 1000;
+	int energy = 100;
+	bool getAlive();
 	void jumpForward();
 	void moveRight();
 	void moveLeft();

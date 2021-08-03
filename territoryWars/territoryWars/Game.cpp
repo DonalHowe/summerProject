@@ -244,8 +244,28 @@ void Game::update(double dt)
 		if (m_playerObjects.at(0).energy == 0 && m_playerObjects.at(1).energy == 0 && m_playerObjects.at(2).energy == 0 && m_playerObjects.at(3).energy == 0)
 		{
 			//std::cout << "all players out of energy" << std::endl;;
+			if (playerTurn == true && m_enemy.getAlive() == true)
+			{
+				m_enemy.setEnergy(100);
+			}
 			enemyTurn = true;
 			playerTurn = false;
+			
+			
+		}
+		if (m_enemy.GetEnergy() <= 0)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				if (enemyTurn == true && m_playerObjects.at(i).getAlive() == true)
+				{
+					m_playerObjects.at(i).setEnergy(100);
+				}
+			}
+			enemyTurn = false;
+			playerTurn = true;
+			
+		
 		}
 		//m_transition.switchTeams();
 		if (playerTurn == true)
@@ -256,7 +276,7 @@ void Game::update(double dt)
 		{
 			enemymovement();
 		}
-		
+		std::cout << std::to_string(m_enemy.GetEnergy()) << std::endl;
 	
 	}
 	else if (m_states == gameStates::lossState)
